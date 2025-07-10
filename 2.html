@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe - XP + Modern Compatible</title>
+  <style type="text/css">
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    td {
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      font-size: 32px;
+      border: 1px solid #000;
+      cursor: pointer;
+    }
+    #status {
+      font-family: sans-serif;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+  <script type="text/javascript">
+    var currentPlayer = "X";
+    function makeMove(cell) {
+      if (cell.innerHTML === "") {
+        cell.innerHTML = currentPlayer;
+        if (checkWin()) {
+          document.getElementById("status").innerHTML = "Player " + currentPlayer + " wins!";
+          disableBoard();
+        } else if (isDraw()) {
+          document.getElementById("status").innerHTML = "It's a draw!";
+        } else {
+          currentPlayer = (currentPlayer === "X") ? "O" : "X";
+          document.getElementById("status").innerHTML = "Turn: Player " + currentPlayer;
+        }
+      }
+    }
+
+    function isDraw() {
+      var cells = document.getElementsByTagName("td");
+      for (var i = 0; i < cells.length; i++) {
+        if (cells[i].innerHTML === "") return false;
+      }
+      return true;
+    }
+
+    function checkWin() {
+      var c = [];
+      var cells = document.getElementsByTagName("td");
+      for (var i = 0; i < 9; i++) c[i] = cells[i].innerHTML;
+
+      var wins = [
+        [0,1,2],[3,4,5],[6,7,8], // rows
+        [0,3,6],[1,4,7],[2,5,8], // columns
+        [0,4,8],[2,4,6]          // diagonals
+      ];
+
+      for (var i = 0; i < wins.length; i++) {
+        var [a,b,cIndex] = wins[i];
+        if (c[a] !== "" && c[a] === c[b] && c[a] === c[cIndex]) return true;
+      }
+      return false;
+    }
+
+    function disableBoard() {
+      var cells = document.getElementsByTagName("td");
+      for (var i = 0; i < cells.length; i++) {
+        cells[i].onclick = null;
+      }
+    }
+
+    function resetBoard() {
+      var cells = document.getElementsByTagName("td");
+      for (var i = 0; i < cells.length; i++) {
+        cells[i].innerHTML = "";
+        cells[i].onclick = function() { makeMove(this); };
+      }
+      currentPlayer = "X";
+      document.getElementById("status").innerHTML = "Turn: Player X";
+    }
+
+    window.onload = function() {
+      resetBoard();
+    }
+  </script>
+</head>
+<body>
+  <h2>Tic Tac Toe</h2>
+  <table>
+    <tr>
+      <td onclick="makeMove(this)"></td>
+      <td onclick="makeMove(this)"></td>
+      <td onclick="makeMove(this)"></td>
+    </tr>
+    <tr>
+      <td onclick="makeMove(this)"></td>
+      <td onclick="makeMove(this)"></td>
+      <td onclick="makeMove(this)"></td>
+    </tr>
+    <tr>
+      <td onclick="makeMove(this)"></td>
+      <td onclick="makeMove(this)"></td>
+      <td onclick="makeMove(this)"></td>
+    </tr>
+  </table>
+  <div id="status">Turn: Player X</div>
+  <br>
+  <button onclick="resetBoard()">Reset Game</button>
+</body>
+</html>
+

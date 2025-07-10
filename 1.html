@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pi Calculator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #output {
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pi Calculator</h1>
+  <label for="digits">Number of Digits to Calculate:</label>
+  <input type="number" id="digits" value="1000" min="1">
+  <button onclick="calculatePi()">Calculate Pi</button>
+  <pre id="output"></pre>
+
+  <script>
+    Decimal.set({ precision: 1002, rounding: Decimal.ROUND_HALF_UP });
+
+    function calculatePi() {
+      const digits = parseInt(document.getElementById('digits').value, 10);
+      const mc = { precision: digits + 2, rounding: Decimal.ROUND_HALF_UP };
+
+      let a = new Decimal(1);
+      let b = new Decimal(1).div(new Decimal(2).sqrt());
+      let t = new Decimal(0.25);
+      let p = new Decimal(1);
+      let aPrev, bPrev, tPrev;
+
+      while (true) {
+        aPrev = a;
+        bPrev = b;
+        tPrev = t;
+
+        a = aPrev.plus(bPrev).div(2);
+        b = aPrev.times(bPrev).sqrt();
+        t = tPrev.minus(p.times(aPrev.minus(a).pow(2)));
+        p = p.times(2);
+
+        if (a.equals(aPrev) && b.equals(bPrev)) {
+          break;
+        }
+      }
+
+      const pi = a.plus(b).pow(2).div(t.times(4));
+      const piDigits = pi.toFixed(digits).replace(".", "");
+
+      document.getElementById('output').textContent = `Pi: 3.${piDigits.substring(1)}`;
+    }
+  </script>
+</body>
+</html>
