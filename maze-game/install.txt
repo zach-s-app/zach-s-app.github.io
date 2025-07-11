@@ -1,0 +1,7 @@
+1.pick a or b or c for you to install version
+a.ask the web and chat gpt
+b.go to https://www.mono-project.com/download/stable/
+c.use the cmd "sudo apt install mono-complete"
+2.next try running the file maze.exe
+3.if does not work then just aks chat gpt or look up how to fix your prob
+4.have fun

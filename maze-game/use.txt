@@ -1,0 +1,6 @@
+1.if you did not get the run way to work make sure you are using the right cmd
+2.ask chat gpt or look it up on the web to get it to work
+3.change the example file they showed for the right one
+4.have fun and if it does not work then sorry maybe you might need a new device or something but ya if it does not work just don't worry it was just a simple maze game you could ask chat gpt to re-code it to work if you need oh and it is mono(C#) not dotnet C# keep that in mind
+5.I have other versions made in other types of code if you need me just go to https://zach-s-app.github.io/ then just find me oh and or you can see me on vrchat E0ZACH or at "zach and rob vermaas yt"
+6.i will not respond right a way

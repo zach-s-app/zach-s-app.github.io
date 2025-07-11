@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brainfuck Interpreter</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 20px;
+    }
+    textarea, pre {
+      width: 100%;
+      background: #2d2d2d;
+      color: #dcdcdc;
+      border: none;
+      padding: 10px;
+      font-family: monospace;
+      margin-bottom: 10px;
+    }
+    button {
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Brainfuck Interpreter</h1>
+
+  <label>Brainfuck Code:</label>
+  <textarea id="code" rows="10">
+++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.
+  </textarea>
+
+  <label>Input (optional):</label>
+  <textarea id="input" rows="2"></textarea>
+
+  <button onclick="runBF()">▶ Run</button>
+
+  <h2>Output:</h2>
+  <pre id="output"></pre>
+
+  <script>
+    function runBF() {
+      const code = document.getElementById("code").value.replace(/[^\[\]\+\-\.<>\,]/g, '');
+      const input = document.getElementById("input").value;
+      const outputEl = document.getElementById("output");
+
+      let tape = new Uint8Array(30000);
+      let ptr = 0, ip = 0, inputPtr = 0;
+      let loopStack = [], output = '';
+
+      while (ip < code.length) {
+        let cmd = code[ip];
+        switch (cmd) {
+          case '>': ptr++; break;
+          case '<': ptr--; break;
+          case '+': tape[ptr]++; break;
+          case '-': tape[ptr]--; break;
+          case '.': output += String.fromCharCode(tape[ptr]); break;
+          case ',':
+            tape[ptr] = inputPtr < input.length ? input.charCodeAt(inputPtr++) : 0;
+            break;
+          case '[':
+            if (tape[ptr] === 0) {
+              let open = 1;
+              while (open && ++ip < code.length) {
+                if (code[ip] === '[') open++;
+                else if (code[ip] === ']') open--;
+              }
+            } else {
+              loopStack.push(ip);
+            }
+            break;
+          case ']':
+            if (tape[ptr] !== 0) {
+              ip = loopStack[loopStack.length - 1];
+            } else {
+              loopStack.pop();
+            }
+            break;
+        }
+        ip++;
+      }
+
+      outputEl.textContent = output;
+    }
+  </script>
+
+</body>
+</html>
+

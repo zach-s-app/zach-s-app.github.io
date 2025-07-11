@@ -1,0 +1,4 @@
+1.go to https://www.mono-project.com/download/stable/
+2.pick the installer you want
+3.follow the instructions
+#.this file is here for windows / mac for Linux look in install.txt also yes that url does have the Linux install guide as well

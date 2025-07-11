@@ -1,0 +1,4 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>BF</title></head><body style="background:#111;color:#eee;font-family:monospace"><textarea id=c rows=10 style="width:100%;"></textarea><br><textarea id=i rows=2 style="width:100%;"></textarea><br><button onclick="r()">Run</button><pre id=o></pre><script>
+function r(){let c=document.getElementById("c").value.replace(/[^\[\]\+\-\.<>\,]/g,''),i=document.getElementById("i").value,t=new Uint8Array(3e4),p=0,j=0,x=0,s=[],o='';while(j<c.length){let d=c[j];switch(d){case'>':p++;break;case'<':p--;break;case'+':t[p]++;break;case'-':t[p]--;break;case'.':o+=String.fromCharCode(t[p]);break;case',':t[p]=x<i.length?i.charCodeAt(x++):0;break;case'[':if(t[p]==0){let e=1;while(e&&++j<c.length){if(c[j]=='[')e++;else if(c[j]==']')e--}}else s.push(j);break;case']':if(t[p]!=0)j=s[s.length-1];else s.pop();break}j++}document.getElementById("o").textContent=o}
+</script></body></html>
+
