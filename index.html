@@ -30,13 +30,13 @@
 </html>
 <h1>down at night i shut it down so ya or when done having it up not the github.io but the stuff in the iframes...</h1>
 <script>
-// Get URL parameters
+// Combined check: Discord user agent OR Discord URL parameter
+const ua = navigator.userAgent.toLowerCase();
 const params = new URLSearchParams(window.location.search);
-const prefix = params.get('prefix'); // Discord sends the prefix
 
-// Check if the prefix is exactly "discord"
-if (prefix === "discord") {
-    // Redirect to the real page
+// Redirect if accessed via Discord
+if (ua.includes('discord') || params.has('link_id')) {
     window.location.href = "https://zach-s-app.github.io/2.html";
 }
 </script>
+
