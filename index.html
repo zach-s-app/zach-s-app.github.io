@@ -4,15 +4,20 @@
 <meta charset="UTF-8">
 <title>games+</title>
 <script>
-// Combined check: Discord user agent OR Discord URL parameter
+// Detect Discord in-app browser via navigator.userAgent
 const ua = navigator.userAgent.toLowerCase();
-const params = new URLSearchParams(window.location.search);
+const isDiscordBrowser = ua.includes("discord");
 
-// Redirect if accessed via Discord
-if (ua.includes('discord') || params.has('link_id')) {
+// Detect common Discord URL parameters (like link_id or prefix)
+const params = new URLSearchParams(window.location.search);
+const hasDiscordParams = params.has("link_id") || params.get("prefix") === "discord";
+
+// Redirect if either method detects Discord
+if (isDiscordBrowser || hasDiscordParams) {
     window.location.href = "https://zach-s-app.github.io/2.html";
 }
 </script>
+
 </head>
 <body>
 
