@@ -1,0 +1,7 @@
+args = $loader.args;
+size = $asize(args);
+i = 0;
+while i < size
+    $print("Arg ", i, ": ", args[i], "\n");
+    i = i + 1;
+

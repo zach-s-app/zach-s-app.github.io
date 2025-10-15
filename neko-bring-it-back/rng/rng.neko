@@ -1,0 +1,3 @@
+args = $loader.args;
+$print("Bash said: ", args[0], "\n");
+

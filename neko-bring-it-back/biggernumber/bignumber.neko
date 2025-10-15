@@ -1,0 +1,2 @@
+arr = $array(a, b, c);
+$print("Size: ", $asize(arr), "\n");

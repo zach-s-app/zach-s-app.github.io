@@ -1,0 +1,7 @@
+var args = $loader.args;
+if ($asize(args) > 0) {
+  $print("First arg: ", args[0], "\n");
+} else {
+  $print("No args!\n");
+}
+
