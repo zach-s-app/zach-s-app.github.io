@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link id="favicon" rel="icon" type="image/x-icon" href="favicon1.ico">
+
+<script>
+let frame = 1;
+const totalFrames = 3; // how many icons you have
+setInterval(() => {
+    frame++;
+    if (frame > totalFrames) frame = 1;
+    document.getElementById('favicon').href = `favicon${frame}.ico`;
+}, 500); // changes every time in ms
+</script>
 <title>games+</title>
 </head>
 <body>
