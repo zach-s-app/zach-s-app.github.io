@@ -1,0 +1,43 @@
+Create a robots.txt file by opening a plain text editor, adding directives to control web crawlers, and saving the file as robots.txt in your website’s root directory. Common rules include User-agent: * (applies to all bots) and Disallow: / (blocks access) or Allow: / (grants access) to specific folders. 
+Google for Developers
+Google for Developers
+ +3
+Steps to Create and Upload a Robots.txt File
+Open a Text Editor: Use Notepad (Windows), TextEdit (Mac), or any plain text editor.
+Add Rules: Write the directives (see examples below).
+Save the File: Save the file specifically as robots.txt.
+Upload to Root Directory: Upload this file to the root folder of your domain (e.g., public_html or the main folder containing your index file).
+Verify: Check the file by visiting yourdomain.com/robots.txt in a browser. 
+Google for Developers
+Google for Developers
+ +4
+Common robots.txt Examples
+Allow all search engines to crawl everything:
+text
+User-agent: *
+Disallow:
+Block all search engines from your entire site:
+text
+User-agent: *
+Disallow: /
+Block specific folders (e.g., WordPress admin):
+text
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Add Sitemap Link:
+text
+Sitemap: https://www.example.com/sitemap.xml
+ 
+Alternative Methods
+WordPress: Use SEO plugins like Yoast SEO or All-in-One SEO to generate/edit the file directly from your dashboard.
+Generators: Use online tools to create the file and download it. 
+SEOptimer
+SEOptimer
+ +4
+Key Rules
+Location: Must be in the root directory. example.com/robots.txt.
+Case Sensitivity: The file name must be all lowercase: robots.txt.
+Applicability: Rules apply to the subdirectories and pages within the same protocol, host, and port. 
+Google for Developers
+Google for Developers
