@@ -1,0 +1,29 @@
+∨+∧=⩙
+1⩙1=1
+1⩙0=1
+0⩙1=1
+0⩙0=0
+but also
+1⩙1=1
+1⩙0=0
+0⩙1=0
+0⩙0=0
+since it is both a ∨ & a ∧ we made a & ∨ so
+1⩙1=1
+1⩙0=1
+0⩙1=1
+0⩙0=0
+is correct
+1∨1=1
+1∧1=1
+0∨1=1
+0∧1=0
+1∨0=1
+1∧0=0
+0∨0=0
+0∧0=0
+so ya then i make the output a ∨ of both into one binary digit so it ends up like this
+1⩙1=1
+1⩙0=1
+0⩙1=1
+0⩙0=0
