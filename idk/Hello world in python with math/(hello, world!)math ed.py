@@ -1,0 +1,1 @@
+p="import\x20";q="\n";exec(f"{p}math{q}{p}cmath");c=0.6;d=1;e=2;a=float(cmath.isclose(d,e,rel_tol=c));print("v"+str((a*math.pi)/float(math.pi)));f=8*6;g=f+17;h="llo,";i=20;j=g+12;k="o";l=g+7;m="l";n=g-1;o=21;print(eval(f"'\\x{f}\\x{g}{h}\\x{i}\\x{j}{k}\\x{l}{m}\\x{n}\\x{o}'"))
